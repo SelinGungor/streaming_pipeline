@@ -37,7 +37,6 @@ def run(arguments=None, save_main_session=True):
     pipeline_options.view_as(SetupOptions).save_main_session = save_main_session
     pipeline_options.view_as(StandardOptions).streaming = True
 
-
     with beam.Pipeline(options=pipeline_options) as p:
         (p
               | 'ReadData' >> beam.io.ReadFromPubSub(subscription=input_subscription).with_output_types(bytes)
