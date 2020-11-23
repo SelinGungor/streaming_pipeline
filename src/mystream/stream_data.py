@@ -21,14 +21,13 @@ def publish_to_topic():
 			json_response = json.loads(response_line)
 			row = json.dumps(json_response, indent=4, sort_keys=True)
 
-			print(row)
-			print(type(row))
+			print(row.encode("utf-8"))
 			publisher.publish(pubsub_topic, row.encode("utf-8"))
 			print("Publishing to the topic :" + row)
 			counter = counter + 1
 			time.sleep(1)
 
-			if counter == 3:
+			if counter == 5:
 				break
 
 
